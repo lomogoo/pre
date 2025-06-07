@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>⛰️Route227🚚</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="container">
+      <h1 class="app-title">⛰️Route227🚚</h1>
+    </div>
+  </header>
+
+  <main class="app-content">
+
+    <!-- Feed Section -->
+    <section id="feed-section" class="section active">
+      <div class="container">
+        <div class="category-tabs">
+          <button class="category-tab active" data-category="all">ALL</button>
+          <button class="category-tab" data-category="イベント">イベント</button>
+          <button class="category-tab" data-category="お店">お店</button>
+          <button class="category-tab" data-category="ニュース">ニュース</button>
+        </div>
+        <form id="login-form">
+  <input type="email" id="email" placeholder="メールアドレスを入力" required />
+  <button type="submit">📩 ログインリンクを送信</button>
+</form>
+<p id="login-message"></p>
+        <div class="articles-container" id="articles-container">
+          <!-- JS で記事カードを追加 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FoodTruck Section -->
+    <section id="foodtruck-section" class="section">
+      <div class="container">
+        <div class="card stamp-card">
+          <div class="card__header">
+            <h2>Route227 スタンプカード</h2>
+          </div>
+          <div class="card__body">
+            <!-- スタンプグリッド -->
+            <div class="stamp-container">
+              <div class="stamp-grid">
+                <div class="stamp" data-stamp-id="1"></div>
+                <div class="stamp" data-stamp-id="2"></div>
+                <div class="stamp" data-stamp-id="3"></div>
+                <div class="stamp" data-stamp-id="4"></div>
+                <div class="stamp" data-stamp-id="5"></div>
+                <div class="stamp" data-stamp-id="6"></div>
+              </div>
+            </div>
+
+            <!-- ここに QRスキャンボタンを移動 -->
+            <div class="scan-qr-container" style="text-align:center; margin: var(--space-16) 0;">
+              <button class="btn btn--secondary" id="scan-qr">📱QRコードをスキャン</button>
+            </div>
+
+            <!-- 交換メニュー -->
+            <div class="rewards-container">
+              <div class="reward-item">
+                <h3>3スタンプ</h3>
+                <p>☕️コーヒー1杯無料</p>
+                <button class="btn btn--primary" id="coffee-reward" disabled>交換する</button>
+              </div>
+              <div class="reward-item">
+                <h3>6スタンプ</h3>
+                <p>🍛カレー1杯無料</p>
+                <button class="btn btn--primary" id="curry-reward" disabled>交換する</button>
+              </div>
+            </div>
+
+          </div>
+          <!-- card__footer は不要になったので削除 -->
+        </div>
+
+        <!-- QR Scanner Modal -->
+        <div class="modal" id="qr-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>QRコードをスキャン</h3>
+              <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div id="qr-reader"></div>
+              <div id="qr-result"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notification Modal -->
+        <div class="modal" id="notification-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="notification-title">お知らせ</h3>
+              <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p id="notification-message"></p>
+              <button class="btn btn--primary close-notification">OK</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Navigation -->
+  <nav class="footer-nav">
+    <div class="container">
+      <ul class="nav-tabs">
+        <li class="nav-item">
+          <button class="nav-link active" data-section="feed-section">
+            <span>⛰️</span>
+            227
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-section="foodtruck-section">
+            <span>🚚</span>
+            FoodTruck
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
